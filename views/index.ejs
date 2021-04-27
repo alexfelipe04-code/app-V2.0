@@ -1,23 +1,42 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <title>App Notes</title>
-    <link rel="stylesheet" href="css/index.css">
-    
-</head>
-<body>
-    <!--Instrucion con EJS: imprime un mensaje a traves de la variable menssage en mi vista html-->
-    <%= message %>
-    <form action="/add_note" method="post">
-        <label for="POST-title">Title:</label>
-        <input type="text" name="title">
-        <label for="POST-body">Body:</label>
-        <input type="text" name="body">
-        <input type="submit" value="Crear Nota">
+<%- include('cabecera', {tituloweb: 'Inicio EJS'}); %>
+
+<div class="field">
+<h1 class="title" >Hola a EJS <%= titulo %></h1></div>
+<div class="box">
+
+  <div class="columns">
+    <div class="column is-narrow">
+      <div class="box" style="width: 200px;">
+        <p class="title is-5">Crear</p>
+        <p class="subtitle"><img src="css/Crear.png" class="d-block w-100" alt="..."></p>
+      </div>
+    </div>
+    <div class="column">
+      <div class="box">
+        <p class="title is-5">ESCRIBIR EN ARCHIVOS EN NODE.JS</p>
+        <p class="subtitle">Escribir en archivos es una necesidad frecuente al programar en cualquier lenguaje. Al igual que otros lenguajes de programación, JavaScript con Node.js hace que el manejo del sistema de archivos sea intuitivo mediante el uso de un módulo que se ocupa del sistema de archivos del sistema operativo.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="columns">
+    <div class="column is-narrow">
+      <div class="box" style="width: 200px;">
+        <p class="title is-5">Editar</p>
+        <p class="subtitle"><img src="css/EDIT.jpg" class="d-block w-100" alt="..."></p>
+      </div>
+    </div>
+    <div class="column">
+      <div class="box">
+        <p class="title is-5">Lectura de archivos con NodeJS</p>
+        <p class="subtitle">En NodeJS todas las operaciones de acceso al sistema de archivos están englobadas dentro del módulo "fs" (File System). Si queremos leer un archivo de texto que tenemos en local simplemte usaremos ese módulo para extraer el contenido del fichero, indicando su ruta y otra serie de parámetros que ahora describiremos.
+
+          En lo que respecta a los métodos del módulo fs hay que señalar que se entregan en dos alternativas, tanto síncrona como asíncrona, que pueden cubrir diferentes situaciones y necesidades que tengamos. Quizás esta sea la parte más destacable del API de NodeJS, del que seguro que ya nos venimos familiarizando a lo largo del Manual de Node, la necesidad de lidiar con funciones asíncronas y sus callback. Lo explicaremos con detalle..</p>
+      </div>
+    </div>
+  </div>
+
+</div>
 
 
-    </form>
-    
-</body>
-</html> 
+<%- include('footer'); %>

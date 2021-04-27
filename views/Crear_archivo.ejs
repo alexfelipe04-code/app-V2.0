@@ -1,0 +1,38 @@
+<%- include('cabecera', {tituloweb: 'Inicio EJS'}); %>
+
+<div class="box">
+
+    <h1 class="title">Crear nuevo archivo Txt</h1>
+    
+    <form action="/add_archivo" class="my-2" method="POST">
+        <div class="field">
+            <label class="label">Titulo del archivo</label>
+       <div class="control">    
+       <input 
+           type="text"
+           placeholder="Ingrese  titulo"
+           class="input"
+           name="title"
+       >
+       </div>   
+    <div class="field">
+        <label class="label">Informacion del Archivo</label>
+        <div class="control"> 
+        <textarea class="textarea" placeholder="e.g. Hello world" type="text"  name="body" ></textarea>   
+       
+        
+        </div>
+    </div>
+        <button
+            type="submit"
+            class="button is-primary"
+        >
+            Crear Archivo
+        </button>
+    
+    </form>
+
+  </div>
+
+    
+<%- include("footer") %>

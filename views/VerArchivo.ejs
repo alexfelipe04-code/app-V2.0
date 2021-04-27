@@ -1,0 +1,30 @@
+<%- include('cabecera', {tituloweb: 'Inicio EJS'}); %>
+
+<div class="box">
+
+    <h1 class="title">Ver archivo</h1>
+    
+    <form action="/editar_archivo" class="my-2" method="POST">
+        
+    <div class="field">
+        <label class="label">Informacion del Archivo</label>
+        <div class="control"> 
+        <textarea class="textarea"  value="<%= archivo %>"  cols="100" rows="5"  tabindex="16" name="body" ><%=  archivo  %></textarea>   
+       
+        
+        </div>
+    </div>
+    <input id="prodId" name="prodId" type="hidden" value="<%= title %>">
+        <button
+            type="submit"
+            class="button is-primary"
+        >
+            Editar Archivo
+        </button>
+    
+    </form>
+
+  </div>
+
+    
+<%- include("footer") %>

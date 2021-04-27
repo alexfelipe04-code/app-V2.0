@@ -3,24 +3,17 @@ const chalk = require("chalk")
 const { constants } = require("buffer")
 
 //console.log("This is the notes.js module")
-
-const  readNote = function(title){
-    const notes = loadNotes()
-    const foundNote = notes.find((elemento)=>{
-        return elemento.title === title
-    })
-
-    if(foundNote){
-        console.log("Title:"+foundNote.title+"Body"+foundNote.body)
-    }
+const log = console.log;
 
 
-
-}
 
 const  removeNote = function(title){
     const notes = loadNotes()
     const nuevasNotas=notes.filter((n)=> n.title!==title)
+    const archivo1 = './'+title+'.txt';
+    fs.unlinkSync(archivo1);
+    console.log('El archivo ha sido eliminado');
+    
     console.log(nuevasNotas)
 
     
@@ -28,14 +21,40 @@ const  removeNote = function(title){
   
 
 }
-const modifyNote = function (title, newTitle) {
-    let notes = loadNotes();
-    noteIndex = notes.findIndex((element) => element.title === title);
-    if (noteIndex === -1) return log(chalk.red("We couldn't find the note you were looking for"));
-    notes[noteIndex].title = newTitle
-    log(chalk.blue("The note was modified"))
-    saveNotes(notes);
-};
+
+
+const CrearArchivo = function(title,body){
+    const archivo = title+'.txt';
+    const contenido = body;
+    fs.writeFileSync(archivo, contenido);
+    
+}
+
+
+const leerArchivo = function(title){
+    const titulo= title
+    console.log("soy el titulo"+titulo)
+    const archivo1 = './'+title+'.txt';
+    const archivo = fs.readFileSync(archivo1, 'UTF-8');
+        console.log(archivo);
+    
+    console.log('Contenido del archivo...');
+
+    return archivo
+
+    
+}
+
+const ModificarArchivo = function(title,body){
+    const archivo = title+'.txt';
+    const contenido = body;
+    fs.writeFileSync(archivo, contenido);
+    
+}
+
+
+
+
 
 
 const listNotes = function(){
@@ -43,18 +62,9 @@ const listNotes = function(){
     notes.forEach(function(element){
         console.log("Title:"+element.title+"Body"+element.body)
     })
-
+    return notes
 }
 
-const editNote = function(title,body){
-    const notes =loadNotes()
-    notes.forEach(function(elemento){
-        elemento[title] = elemento[title] == valorViejo ? valorNuevo : elemento[title]
-
-        console.log("Title:"+elemento.title+"Body"+elemento.body)
-    })
-
-}
 
 
 
@@ -111,7 +121,8 @@ const loadNotes = function(){
 module.exports ={
     addNote:addNote,
     listNotes:listNotes,
-    readNote:readNote,
     removeNote,removeNote,
-    modifyNote: modifyNote
+    CrearArchivo:CrearArchivo,
+    leerArchivo: leerArchivo,
+    ModificarArchivo:ModificarArchivo 
 }

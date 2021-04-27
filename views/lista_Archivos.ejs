@@ -1,0 +1,77 @@
+<%- include('cabecera', {tituloweb: 'Inicio EJS'}); %>
+
+
+  
+<div class="box">
+
+    <h1 class="title">CRUD </h1>
+    <div class="field">
+    <a
+        class="button is-primary"
+        href="/Crear_archivo"
+    >
+        Crear nueva Archivo
+    </a>
+    </div>
+
+    <table class="table is-fullwidth">
+        <thead>
+          <tr>
+            
+            <th scope="col">Titulo del archivo</th>
+            
+            <th scope="col">Acción</th>
+            <th scope="col">Acción</th>
+          </tr>
+        </thead>
+        <tbody>
+            
+            <% notes_array.forEach(function(note){ %>
+                    
+                    <tr>
+                        
+                        <td><%= note.title %></td>
+                        
+                       
+                        <td>
+                            
+                            <form action="/Ver_archivo" class="my-2" method="POST">
+                            <input id="prodId" name="prodId" type="hidden" value="<%= note.title %>">
+                            <button
+                                type="submit"
+                                class="button is-warning"
+                            >
+                            Editar
+                             </button>
+
+                            </form>
+                        </td>  
+                        <td>
+                            <form action="/eliminarArchivo" class="my-2" method="POST">
+                                
+                                <input id="prodId" name="prodId" type="hidden" value="<%= note.title %>">
+                                <button
+                                type="submit"
+                                class="button is-danger"
+                            >
+                                Eliminar
+                            </button>
+
+                            </form>
+                        </td>
+                       
+
+                    </tr>
+                
+                <% }) %>
+            
+
+        </tbody>
+      </table>
+
+    
+</div>
+
+<%- include("footer") %>
+
+
